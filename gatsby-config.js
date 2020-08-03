@@ -19,6 +19,23 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `56e3d212d4325688d6e4a9b3cc298a`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-snipcart`,
+      options: {
+        apiKey:
+          "OTgwMGMyZmYtYjU1Ni00MGExLTlhMTQtYmI0Njk0YWFhMWQ4NjM3MzIwNTY3NjU5ODgxNDUz",
+        autopop: true,
+        js: "https://cdn.snipcart.com/themes/v3.0.18/default/snipcart.js",
+        jquery: false,
+        styles: "https://cdn.snipcart.com/themes/v3.0.18/default/snipcart.css",
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

@@ -7,8 +7,7 @@ config.siteMetadata.products.reduce(
     chain
       .then(() =>
         client.uploadImage(
-          `./src/images/${product.id}.jpg`
-          // `https://raw.githubusercontent.com/AnthonyWelc/bebecoders-images/master/${product.id}.jpg`
+          `https://raw.githubusercontent.com/renamelie/bebeCoders/master/src/images/${product.id}.jpg`
         )
       )
       .then(image =>

@@ -1,28 +1,37 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Layout from "../components/layout"
-// import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = ({ data }) => {
-  const products = data.site.siteMetadata.products
+  const products = data.allDatoCmsProduct
 
-  console.log(products)
   return (
     <Layout>
       <SEO title="Home" />
       <main className="grid-container">
-        {products.map(product => (
+        {products.edges.map(({ node: product }) => (
           <article className="grid-item" key={product.id}>
             <h2>{product.name}</h2>
+            <Img fluid={product.image.fluid} loading="lazy"></Img>
             <p>{product.price}</p>
-            <a href="#">Ajouter au panier</a>
+            <a
+              href="#"
+              className="snipcart-add-item"
+              data-item-id={product.id}
+              data-item-description={product.name}
+              data-item-price={product.price}
+              data-item-image={product.image.url}
+              data-item-name={product.name}
+              data-item-url="/"
+            >
+              Ajouter au panier
+            </a>
           </article>
         ))}
       </main>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
     </Layout>
   )
 }
@@ -31,13 +40,18 @@ export default IndexPage
 
 export const query = graphql`
   query ProductsQuery {
-    site {
-      siteMetadata {
-        products {
+    allDatoCmsProduct {
+      edges {
+        node {
           id
           name
           price
-          image
+          image {
+            url
+            fluid(maxWidth: 600, maxHeight: 600) {
+              ...GatsbyDatoCmsFluid
+            }
+          }
         }
       }
     }
