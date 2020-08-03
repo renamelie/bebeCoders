@@ -26,6 +26,8 @@ const IndexPage = ({ data }) => {
               data-item-image={product.image.url}
               data-item-name={product.name}
               data-item-url="/"
+              data-item-payment-interval={product.sub ? "Month" : null}
+              data-item-payment-interval-count={product.sub ? "1" : null}
             >
               Ajouter au panier
             </a>
@@ -46,6 +48,7 @@ export const query = graphql`
           id
           name
           price
+          sub
           image {
             url
             fluid(maxWidth: 600, maxHeight: 600) {
