@@ -1,8 +1,11 @@
+const products = require("./src/products")
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `BebeCoders`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    products: [...products],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

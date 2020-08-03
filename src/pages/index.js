@@ -1,22 +1,45 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+// import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  const products = data.site.siteMetadata.products
+
+  console.log(products)
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <main className="grid-container">
+        {products.map(product => (
+          <article className="grid-item" key={product.id}>
+            <h2>{product.name}</h2>
+            <p>{product.price}</p>
+            <a href="#">Ajouter au panier</a>
+          </article>
+        ))}
+      </main>
+      <Link to="/page-2/">Go to page 2</Link> <br />
+      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+export const query = graphql`
+  query ProductsQuery {
+    site {
+      siteMetadata {
+        products {
+          id
+          name
+          price
+          image
+        }
+      }
+    }
+  }
+`
