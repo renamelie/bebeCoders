@@ -25,10 +25,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-snipcart`,
+      resolve: `gatsby-plugin-snipcartv3`,
       options: {
-        apiKey:
-          "OTgwMGMyZmYtYjU1Ni00MGExLTlhMTQtYmI0Njk0YWFhMWQ4NjM3MzIwNTY3NjU5ODgxNDUz",
+        apiKey: `OTgwMGMyZmYtYjU1Ni00MGExLTlhMTQtYmI0Njk0YWFhMWQ4NjM3MzIwNTY3NjU5ODgxNDUz`,
         autopop: true,
         js: "https://cdn.snipcart.com/themes/v3.0.18/default/snipcart.js",
         jquery: false,

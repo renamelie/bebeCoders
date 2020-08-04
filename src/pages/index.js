@@ -16,9 +16,9 @@ const IndexPage = ({ data }) => {
           <article className="grid-item" key={product.id}>
             <h2>{product.name}</h2>
             <Img fluid={product.image.fluid} loading="lazy"></Img>
-            <p>{product.price}</p>
+            <p>{`${product.price} €`}</p>
             <a
-              href="#"
+              href="/"
               className="snipcart-add-item"
               data-item-id={product.id}
               data-item-description={product.name}
